@@ -42,15 +42,18 @@ public class CustomerRepository {
             logger.error(ex.getMessage());
         }
     }
-    public void delete(Customer customer){
+    public boolean delete(long id){
         try{
             trans.begin();
+            Customer customer =em.find(Customer.class, id);
             em.remove(customer);
             trans.commit();
+            return true;
         }catch (Exception ex){
             trans.rollback();
             logger.error(ex.getMessage());
         }
+        return false;
     }
     public Optional<Customer> findbyId(long id){
         TypedQuery<Customer> query = em.createNamedQuery("Customers.findbyId", Customer.class);

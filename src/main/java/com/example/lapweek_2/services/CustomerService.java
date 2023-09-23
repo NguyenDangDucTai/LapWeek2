@@ -1,6 +1,8 @@
 package com.example.lapweek_2.services;
 
+import com.example.lapweek_2.enums.EmployeeStatus;
 import com.example.lapweek_2.models.Customer;
+import com.example.lapweek_2.models.Employee;
 import com.example.lapweek_2.repositories.CustomerRepository;
 
 import java.util.List;
@@ -17,8 +19,8 @@ public class CustomerService {
     public void update(Customer customer){
         repository.update(customer);
     }
-    public void delete(Customer customer){
-        repository.delete(customer);
+    public boolean delete(long id){
+        return repository.delete(id);
     }
     public Optional<Customer> findbyId(long id){
         return repository.findbyId(id);

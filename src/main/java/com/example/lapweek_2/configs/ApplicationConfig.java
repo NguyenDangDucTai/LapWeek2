@@ -1,4 +1,10 @@
 package com.example.lapweek_2.configs;
 
-public class ApplicationConfig {
+import jakarta.ws.rs.ApplicationPath;
+import org.glassfish.jersey.server.ResourceConfig;
+
+@ApplicationPath("/api")
+public class ApplicationConfig extends ResourceConfig {
+
+
 }

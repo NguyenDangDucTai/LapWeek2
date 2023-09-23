@@ -41,19 +41,26 @@ public class OrderRepository {
             logger.error(ex.getMessage());
         }
     }
-    public void delete(Order order){
+    public boolean delete(long id){
         try{
             trans.begin();
+            Order order = em.find(Order.class, id);
             em.remove(order);
             trans.commit();
+            return true;
         }catch (Exception ex){
             trans.rollback();
             logger.error(ex.getMessage());
         }
+        return false;
     }
     public List<Order> findbyDate(Date date){
         return em.createQuery("select o from Order o where o.orderDate = ?1")
                 .setParameter(1, Order.class)
+                .getResultList();
+    }
+    public List<Order> getAll(){
+        return em.createQuery("select ord from Order ord", Order.class)
                 .getResultList();
     }
 }

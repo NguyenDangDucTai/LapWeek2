@@ -14,7 +14,7 @@ public class ProductPriceService {
     public void update(Product_price productPrice){
         repository.update(productPrice);
     }
-    public void delete(Product_price productPrice){
-        repository.delete(productPrice);
+    public boolean delete(long id){
+        return repository.delete(id);
     }
 }

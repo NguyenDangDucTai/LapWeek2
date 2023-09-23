@@ -42,15 +42,18 @@ public class ProductRepository {
             logger.error(ex.getMessage());
         }
     }
-    public void delete(Product product){
+    public boolean delete(long id){
         try{
             trans.begin();
+            Product product = em.find(Product.class, id);
             em.remove(product);
             trans.commit();
+            return true;
         }catch (Exception ex){
             trans.rollback();
             logger.error(ex.getMessage());
         }
+        return false;
     }
 
     public Optional<Product> findbyId(long id){

@@ -3,15 +3,14 @@ package com.example.lapweek_2.services;
 import com.example.lapweek_2.enums.EmployeeStatus;
 import com.example.lapweek_2.models.Employee;
 import com.example.lapweek_2.repositories.EmployeeRepository;
-import jakarta.ws.rs.Path;
 
 import java.util.List;
 import java.util.Optional;
 
-public class EmployeeServices {
+public class EmployeeService {
     private EmployeeRepository repository;
 
-    public EmployeeServices() {
+    public EmployeeService() {
         this.repository = new EmployeeRepository();
     }
     public void inssertEmp(Employee employee){

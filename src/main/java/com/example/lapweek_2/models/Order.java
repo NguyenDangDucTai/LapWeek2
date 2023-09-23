@@ -25,8 +25,12 @@ public class Order {
     public Order() {
     }
 
-    public Order(Date orderDate) {
+    public Order(long order_id, Date orderDate, Employee employee, Customer customers, Order_detail orderDetail) {
+        this.order_id = order_id;
         this.orderDate = orderDate;
+        this.employee = employee;
+        this.customers = customers;
+        this.orderDetail = orderDetail;
     }
 
     public long getOrder_id() {

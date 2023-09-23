@@ -23,7 +23,9 @@ public class Order_detail {
     public Order_detail() {
     }
 
-    public Order_detail(double quantity, double price, String note) {
+    public Order_detail(Order orders, Product product, double quantity, double price, String note) {
+        this.orders = orders;
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
         this.note = note;

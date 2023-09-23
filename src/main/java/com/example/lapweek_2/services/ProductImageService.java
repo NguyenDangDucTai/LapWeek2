@@ -14,7 +14,7 @@ public class ProductImageService {
     public void update(Product_image productImage){
         repository.update(productImage);
     }
-    public void delete(Product_image productImage){
-        repository.delete(productImage);
+    public boolean delete(long id){
+        return repository.delete(id);
     }
 }

@@ -18,11 +18,14 @@ public class OrderService {
     public void update(Order order){
         repository.update(order);
     }
-    public void delete(Order order){
-        repository.delete(order);
+    public boolean delete(long id){
+        return repository.delete(id);
     }
     public List<Order> findByDate(Date date){
         return repository.findbyDate(date);
     }
 
+    public List<Order> getAll() {
+        return repository.getAll();
+    }
 }

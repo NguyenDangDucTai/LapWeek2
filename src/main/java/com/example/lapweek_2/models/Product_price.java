@@ -24,6 +24,13 @@ public class Product_price {
     public Product_price() {
     }
 
+    public Product_price(Product product, Date price_date_time, double price, String note) {
+        this.product = product;
+        this.price_date_time = price_date_time;
+        this.price = price;
+        this.note = note;
+    }
+
     public Product_price(Date price_date_time, double price, String note) {
         this.price_date_time = price_date_time;
         this.price = price;

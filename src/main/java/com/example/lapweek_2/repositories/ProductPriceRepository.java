@@ -1,5 +1,6 @@
 package com.example.lapweek_2.repositories;
 
+import com.example.lapweek_2.models.Product;
 import com.example.lapweek_2.models.Product_price;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -38,15 +39,18 @@ public class ProductPriceRepository {
             logger.error(ex.getMessage());
         }
     }
-    public void delete(Product_price productPrice){
+    public boolean delete(long id){
         try{
             trans.begin();
-            em.remove(productPrice);
+            Product product = em.find(Product.class, id);
+            em.remove(product.getProductPrice());
             trans.commit();
+            return true;
         }catch (Exception ex){
             trans.rollback();
             logger.error(ex.getMessage());
         }
+        return false;
     }
 
 }

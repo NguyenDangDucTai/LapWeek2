@@ -17,8 +17,8 @@ public class ProductService {
     public void update(Product product){
         repository.update(product);
     }
-    public void delete(Product product){
-        repository.delete(product);
+    public boolean delete(long id){
+        return repository.delete(id);
     }
     public Optional<Product> findById(long id){
         return repository.findbyId(id);

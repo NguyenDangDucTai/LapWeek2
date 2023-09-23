@@ -1,6 +1,7 @@
 package com.example.lapweek_2.repositories;
 
 
+import com.example.lapweek_2.models.Order;
 import com.example.lapweek_2.models.Order_detail;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -42,14 +43,17 @@ public class OrderDetailRepository {
             logger.error(ex.getMessage());
         }
     }
-    public void delete(Order_detail orderDetail){
+    public boolean delete(long id){
         try{
             trans.begin();
-            em.remove(orderDetail);
+            Order order = em.find(Order.class, id);
+            em.remove(order.getOrderDetail());
             trans.commit();
+            return true;
         }catch (Exception ex){
             trans.rollback();
             logger.error(ex.getMessage());
         }
+        return false;
     }
 }

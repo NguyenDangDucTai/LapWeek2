@@ -17,7 +17,7 @@ public class OrderDetailService {
     public void update(Order_detail orderDetail){
         repository.update(orderDetail);
     }
-    public void delete(Order_detail orderDetail){
-        repository.delete(orderDetail);
+    public boolean delete(long id){
+        return repository.delete(id);
     }
 }

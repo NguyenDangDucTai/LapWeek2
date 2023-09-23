@@ -30,15 +30,21 @@ public class Product {
     @JoinColumn(name = "product_image_id")
     private List<Product_image> lstProductImage;
 
+    @OneToOne
+    private Product_price productPrice;
+
     public Product() {
     }
 
-    public Product(String name, String description, String unit, String manufacturer_name, ProductStatus status) {
+    public Product(long product_id, String name, String description, String unit, String manufacturer_name, ProductStatus status, List<Product_image> lstProductImage, Product_price productPrice) {
+        this.product_id = product_id;
         this.name = name;
         this.description = description;
         this.unit = unit;
         this.manufacturer_name = manufacturer_name;
         this.status = status;
+        this.lstProductImage = lstProductImage;
+        this.productPrice = productPrice;
     }
 
     public long getProduct_id() {
@@ -91,6 +97,14 @@ public class Product {
 
     public void setStatus(ProductStatus status) {
         this.status = status;
+    }
+
+    public Product_price getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(Product_price productPrice) {
+        this.productPrice = productPrice;
     }
 
     @Override

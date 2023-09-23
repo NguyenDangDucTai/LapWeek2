@@ -38,14 +38,17 @@ public class ProductImageRepository {
             logger.error(ex.getMessage());
         }
     }
-    public void delete(Product_image productImageImage){
+    public boolean delete(long id){
         try{
             trans.begin();
-            em.remove(productImageImage);
+            Product_image productImage = em.find(Product_image.class, id);
+            em.remove(productImage);
             trans.commit();
+            return true;
         }catch (Exception ex){
             trans.rollback();
             logger.error(ex.getMessage());
         }
+        return false;
     }
 }
